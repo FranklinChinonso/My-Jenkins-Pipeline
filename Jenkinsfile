@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Setting up Python venv and installing dependencies..."
-                bat '''
+                sh '''
                     python --version
                     python -m venv venv
                     call venv\\Scripts\\activate.bat
@@ -25,7 +25,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Running tests with pytest..."
-                bat '''
+                sh '''
                     call venv\\Scripts\\activate.bat
                     pytest -q
                 '''
@@ -35,7 +35,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Deployment stage (simulated)"
-                bat 'echo Deployment successful (simulated)'
+                sh 'echo Deployment successful (simulated)'
             }
         }
     }
